@@ -1,0 +1,19 @@
+<div class="card">
+  <h2 class="card-header">Circuit (via Parent Prefix)</h2>
+  <table class="table table-hover attr-table">
+    <thead>
+      <tr>
+        <th scope="col">Parent Prefix</th>
+        <th scope="col">Circuit</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for link in links %}
+        <tr>
+          <td><a href="{{ link.prefix.get_absolute_url }}">{{ link.prefix }}</a></td>
+          <td><a href="{{ link.circuit.get_absolute_url }}">{{ link.circuit }}</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
