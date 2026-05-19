@@ -39,6 +39,7 @@ Supports the standard NetBox CRUD plus filtering by `circuit_id` and `prefix_id`
 - **Circuit detail page** — "Linked Prefixes" panel with an Add Prefix button.
 - **Prefix detail page** — "Circuit Link" panel showing the associated Circuit (if any), with Link / Edit / Unlink buttons.
 - **IPAddress detail page** — Read-only panel showing the Circuit of any parent Prefix that has a link.
+- **Circuits list view** — opt-in "Linked Prefixes" column showing the linked prefixes as a comma-separated list of links. Enable it via the table configuration (gear icon) → add **Linked Prefixes** under Selected Columns.
 
 ## Permissions
 
