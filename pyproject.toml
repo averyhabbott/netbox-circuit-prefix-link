@@ -46,10 +46,10 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/averyabbott/netbox-circuit-prefix-link"
-Source = "https://github.com/averyabbott/netbox-circuit-prefix-link"
-Issues = "https://github.com/averyabbott/netbox-circuit-prefix-link/issues"
-Changelog = "https://github.com/averyabbott/netbox-circuit-prefix-link/releases"
+Homepage = "https://github.com/averyhabbott/netbox-circuit-prefix-link"
+Source = "https://github.com/averyhabbott/netbox-circuit-prefix-link"
+Issues = "https://github.com/averyhabbott/netbox-circuit-prefix-link/issues"
+Changelog = "https://github.com/averyhabbott/netbox-circuit-prefix-link/releases"
 
 [tool.setuptools.dynamic]
 version = { attr = "netbox_circuit_prefix_link.__version__" }
