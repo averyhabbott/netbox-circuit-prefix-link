@@ -1,22 +1,58 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "netbox-circuit-prefix-link"
-version = "0.1.0"
-description = "Link NetBox Circuits to Prefixes."
+dynamic = ["version"]
+description = "NetBox plugin that links Circuits to Prefixes."
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "Apache-2.0" }
-authors = [{ name = "Avery Abbott", email = "Avery.Abbott@veteransunited.com" }]
-classifiers = [
-  "Framework :: Django",
-  "Intended Audience :: System Administrators",
-  "License :: OSI Approved :: Apache Software License",
-  "Programming Language :: Python :: 3",
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [
+  { name = "Avery Abbott", email = "Avery.Abbott@veteransunited.com" },
 ]
+maintainers = [
+  { name = "Avery Abbott", email = "Avery.Abbott@veteransunited.com" },
+]
+keywords = [
+  "netbox",
+  "netbox-plugin",
+  "circuits",
+  "ipam",
+  "prefix",
+  "networking",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Plugins",
+  "Environment :: Web Environment",
+  "Framework :: Django",
+  "Framework :: Django :: 5.2",
+  "Intended Audience :: System Administrators",
+  "Intended Audience :: Information Technology",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: System :: Networking",
+  "Topic :: System :: Systems Administration",
+]
+# No runtime deps: Django, DRF, and NetBox itself are provided by the host install.
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/averyabbott/netbox-circuit-prefix-link"
+Source = "https://github.com/averyabbott/netbox-circuit-prefix-link"
+Issues = "https://github.com/averyabbott/netbox-circuit-prefix-link/issues"
+Changelog = "https://github.com/averyabbott/netbox-circuit-prefix-link/releases"
+
+[tool.setuptools.dynamic]
+version = { attr = "netbox_circuit_prefix_link.__version__" }
 
 [tool.setuptools.packages.find]
 include = ["netbox_circuit_prefix_link*"]
