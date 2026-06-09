@@ -6,7 +6,7 @@ A NetBox plugin that links Circuits to Prefixes.
 - Each Prefix can be linked to at most one Circuit.
 - The link is surfaced as a panel on Circuit, Prefix, and IPAddress detail pages.
 
-Compatible with **NetBox 4.5.x** and **NetBox 4.6.x**.
+Compatible with **NetBox 4.5.x** and **NetBox 4.6.x**. Requires **Python 3.12+**.
 
 ## Install
 
@@ -27,6 +27,62 @@ Run migrations:
 ```bash
 python manage.py migrate netbox_circuit_prefix_link
 ```
+
+## Configuration
+
+You can control which columns appear in the **Circuit** and **Prefix** detail-page panels via
+`PLUGINS_CONFIG` in your NetBox `configuration.py`. Each panel takes a flat, ordered list of
+field names:
+
+```python
+PLUGINS_CONFIG = {
+    'netbox_circuit_prefix_link': {
+        'circuit_panel': ['description', 'utilization'],   # columns in the "Linked Prefixes" table
+        'prefix_panel':  ['provider', 'type'],             # rows in the "Circuit Link" panel
+    },
+}
+```
+
+Notes:
+
+- **Defaults** (used when a key is omitted): `circuit_panel` → `['description', 'utilization']`;
+  `prefix_panel` → `['provider', 'type']`.
+- The identifying link is **always shown first**: the prefix on the Circuit panel, the Circuit
+  on the Prefix panel — you do not list it.
+- On the Circuit panel, the per-row **edit/unlink actions** are always shown last and are
+  automatically hidden for users without change/delete permission.
+- **Unknown field names are ignored** (and a warning is logged), so a typo won't break the page.
+- Columns render in the order listed.
+
+### Available columns — Circuit panel (`circuit_panel`)
+
+Each resolves from the linked Prefix:
+
+| Name | Renders |
+|------|---------|
+| `description` | The prefix's description |
+| `utilization` | Colored usage bar (`get_utilization()`) |
+| `status` | Colored status badge |
+| `vlan` | Assigned VLAN (linkified) |
+| `vrf` | VRF (linkified) |
+| `tenant` | Tenant (linkified) |
+| `role` | Prefix role (linkified) |
+
+### Available columns — Prefix panel (`prefix_panel`)
+
+Each resolves from the linked Circuit:
+
+| Name | Renders |
+|------|---------|
+| `provider` | Circuit provider (linkified) |
+| `provider_account` | Provider account (linkified) |
+| `type` | Circuit type (linkified) |
+| `status` | Colored status badge |
+| `tenant` | Tenant (linkified) |
+| `install_date` | Install date |
+| `termination_date` | Termination date |
+| `commit_rate` | Commit rate (Kbps) |
+| `description` | Circuit description |
 
 ## REST API
 

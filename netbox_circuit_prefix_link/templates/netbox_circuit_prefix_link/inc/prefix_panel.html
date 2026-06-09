@@ -36,5 +36,29 @@
         {% endif %}
       </td>
     </tr>
+    {% if link %}
+      {% for row in rows %}
+        <tr>
+          <th scope="row">{{ row.label }}</th>
+          <td>
+            {% if row.kind == 'link' %}
+              {% if row.value %}
+                <a href="{{ row.value.get_absolute_url }}">{{ row.value }}</a>
+              {% else %}
+                <span class="text-muted">&mdash;</span>
+              {% endif %}
+            {% elif row.kind == 'status' %}
+              <span class="badge text-bg-{{ row.color }}">{{ row.value }}</span>
+            {% else %}
+              {% if row.value or row.value == 0 %}
+                {{ row.value }}
+              {% else %}
+                <span class="text-muted">&mdash;</span>
+              {% endif %}
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    {% endif %}
   </table>
 </div>

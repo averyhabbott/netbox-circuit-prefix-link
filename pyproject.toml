@@ -7,14 +7,14 @@ name = "netbox-circuit-prefix-link"
 dynamic = ["version"]
 description = "NetBox plugin that links Circuits to Prefixes."
 readme = "README.md"
-requires-python = ">=3.10"
-license = "Apache-2.0"
+requires-python = ">=3.12"
+license = "GPL-3.0-or-later"
 license-files = ["LICENSE"]
 authors = [
-  { name = "Avery Abbott", email = "Avery.Abbott@veteransunited.com" },
+  { name = "Avery Abbott", email = "averyhabbott@yahoo.com" },
 ]
 maintainers = [
-  { name = "Avery Abbott", email = "Avery.Abbott@veteransunited.com" },
+  { name = "Avery Abbott", email = "averyhabbott@yahoo.com" },
 ]
 keywords = [
   "netbox",
@@ -35,8 +35,6 @@ classifiers = [
   "Operating System :: OS Independent",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
   "Topic :: System :: Networking",
@@ -49,7 +47,10 @@ dependencies = []
 Homepage = "https://github.com/averyhabbott/netbox-circuit-prefix-link"
 Source = "https://github.com/averyhabbott/netbox-circuit-prefix-link"
 Issues = "https://github.com/averyhabbott/netbox-circuit-prefix-link/issues"
-Changelog = "https://github.com/averyhabbott/netbox-circuit-prefix-link/releases"
+Changelog = "https://github.com/averyhabbott/netbox-circuit-prefix-link/blob/main/CHANGELOG.md"
+
+[project.entry-points."netbox.plugins"]
+netbox_circuit_prefix_link = "netbox_circuit_prefix_link"
 
 [tool.setuptools.dynamic]
 version = { attr = "netbox_circuit_prefix_link.__version__" }
